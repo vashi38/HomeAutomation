@@ -350,6 +350,180 @@ function MyDataService($http, $log) {
             }
           }
         }
+      },
+      3: {
+        id: 3,
+        name: 'Room 3',
+        SwitchBoards: {
+          1: {
+            id: 1,
+            name: 'Switch Board 1',
+            switches: {
+              1: {
+                id: 1,
+                name: 'Sw 1',
+                type: 'TOGGLE',
+                state: {
+                  active: true
+                }
+              },
+              2: {
+                id: 2,
+                name: 'Sw 2',
+                type: 'TOGGLE',
+                state: {
+                  active: false
+                }
+              },
+              3: {
+                id: 3,
+                name: 'Sw 3',
+                type: 'TOGGLE',
+                state: {
+                  active: false
+                }
+              },
+              4: {
+                id: 4,
+                name: 'Sw 4',
+                type: 'TOGGLE',
+                state: {
+                  active: false
+                }
+              },
+              5: {
+                id: 5,
+                name: 'Sw 5',
+                type: 'KNOB',
+                state: {
+                  active: false,
+                  val: 2
+                }
+              },
+              6: {
+                id: 6,
+                name: 'Sw 6',
+                type: 'KNOB',
+                state: {
+                  active: false,
+                  val: 2
+                }
+              }
+            }
+          },
+          2: {
+            id: 2,
+            name: 'Switch Board 2',
+            switches: {
+              1: {
+                id: 1,
+                name: 'Sw 1',
+                type: 'TOGGLE',
+                state: {
+                  active: true
+                }
+              },
+              2: {
+                id: 2,
+                name: 'Sw 2',
+                type: 'TOGGLE',
+                state: {
+                  active: false
+                }
+              },
+              3: {
+                id: 3,
+                name: 'Sw 3',
+                type: 'TOGGLE',
+                state: {
+                  active: false
+                }
+              },
+              4: {
+                id: 4,
+                name: 'Sw 4',
+                type: 'TOGGLE',
+                state: {
+                  active: false
+                }
+              },
+              5: {
+                id: 5,
+                name: 'Sw 5',
+                type: 'KNOB',
+                state: {
+                  active: false,
+                  val: 2
+                }
+              },
+              6: {
+                id: 6,
+                name: 'Sw 6',
+                type: 'KNOB',
+                state: {
+                  active: false,
+                  val: 2
+                }
+              }
+            }
+          },
+          3: {
+            id: 3,
+            name: 'Switch Board 3',
+            switches: {
+              1: {
+                id: 1,
+                name: 'Sw 1',
+                type: 'TOGGLE',
+                state: {
+                  active: true
+                }
+              },
+              2: {
+                id: 2,
+                name: 'Sw 2',
+                type: 'TOGGLE',
+                state: {
+                  active: false
+                }
+              },
+              3: {
+                id: 3,
+                name: 'Sw 3',
+                type: 'TOGGLE',
+                state: {
+                  active: false
+                }
+              },
+              4: {
+                id: 4,
+                name: 'Sw 4',
+                type: 'TOGGLE',
+                state: {
+                  active: false
+                }
+              },
+              5: {
+                id: 5,
+                name: 'Sw 5',
+                type: 'KNOB',
+                state: {
+                  active: false,
+                  val: 2
+                }
+              },
+              6: {
+                id: 6,
+                name: 'Sw 6',
+                type: 'KNOB',
+                state: {
+                  active: false,
+                  val: 2
+                }
+              }
+            }
+          }
+        }
       }
     });
 

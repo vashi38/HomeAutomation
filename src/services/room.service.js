@@ -1,4 +1,4 @@
-const MyRoom = require("../views/Room.js");
+const MyRoom = require("../views/classes/Room.js");
 /** @ngInject */
 function MyRoomService(MyDataService) {
   /**

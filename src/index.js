@@ -4,13 +4,13 @@ require('angular-ui-router');
 var routesConfig = require('./routes');
 var MyDataService = require('./services/data.service');
 var MyRoomService = require('./services/room.service');
-var allRooms = require('./views/showRooms');
-var allSwitchBoards = require('./views/showSwitchBoards');
-var allSwitches = require('./views/showSwitches');
+var allRooms = require('./views/showRooms/showRooms');
+var allSwitchBoards = require('./views/showSwitchBoards/showSwitchBoards');
+var allSwitches = require('./views/showSwitches/showSwitches');
 require('./index.scss');
-require('./views/style.scss');
-require('./views/showRoom.scss');
-require('./views/showSwitchBoards.scss');
+require('./views/showSwitches/style.scss');
+require('./views/showRooms/showRoom.scss');
+require('./views/showSwitchBoards/showSwitchBoards.scss');
 
 angular
   .module('app', ['ui.router'])
