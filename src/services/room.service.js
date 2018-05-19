@@ -27,7 +27,10 @@ function MyRoomService(MyDataService) {
   }
   function _getActiveRoom() {
     if (allRooms && activeRoomId) {
-      return allRooms[activeRoomId - 1];
+      return allRooms.filter(function (rm) {
+        return rm.id === activeRoomId;
+      })[0];
+      // return allRooms[activeRoomId - 1];
     } else {
       return null;
     }
@@ -38,7 +41,9 @@ function MyRoomService(MyDataService) {
   }
   function _getActiveSwitchBoard() {
     if (allRooms && activeSwitchBoard && activeRoomId) {
-      return allRooms[activeRoomId - 1].switchBoards[activeSwitchBoard - 1];
+      return _getActiveRoom().switchBoards.filter(function (sb) {
+        return sb.id === activeSwitchBoard;
+      })[0];
     } else {
       return null;
     }
