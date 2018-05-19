@@ -1,0 +1,20 @@
+.switch-board {
+    border: 1px solid;
+    padding: 30px;
+    flex: 1 1 40%;
+    &.active {
+        background: #00BB00;
+        color: white;
+    }
+    &:hover{
+        cursor: pointer;
+        background: #00BB00;
+        color: white;
+    }
+}
+
+.switch-board-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    text-align: center;
+}

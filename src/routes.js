@@ -3,11 +3,19 @@ module.exports = routesConfig;
 /** @ngInject */
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true).hashPrefix('!');
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/AllRooms');
 
   $stateProvider
-    .state('app', {
-      url: '/',
-      component: 'main'
+    .state('AllRooms', {
+      url: '/AllRooms',
+      component: 'allRooms'
+    })
+    .state('AllSwitchBoards', {
+      url: '/AllSwitchBoards',
+      component: 'allSwitchBoards'
+    })
+    .state('AllSwitches', {
+      url: '/AllSwitches',
+      component: 'allSwitches'
     });
 }

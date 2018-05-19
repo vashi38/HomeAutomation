@@ -5,9 +5,11 @@ function MyDataService($http, $log) {
     return Promise.resolve({
       1: {
         id: 1,
+        name: 'Room 1',
         SwitchBoards: {
           1: {
             id: 1,
+            name: 'Switch Board 1',
             switches: {
               1: {
                 id: 1,
@@ -63,6 +65,7 @@ function MyDataService($http, $log) {
           },
           2: {
             id: 2,
+            name: 'Switch Board 2',
             switches: {
               1: {
                 id: 1,
@@ -118,6 +121,7 @@ function MyDataService($http, $log) {
           },
           3: {
             id: 3,
+            name: 'Switch Board 3',
             switches: {
               1: {
                 id: 1,
@@ -175,9 +179,11 @@ function MyDataService($http, $log) {
       },
       2: {
         id: 2,
+        name: 'Room 2',
         SwitchBoards: {
           1: {
             id: 1,
+            name: 'Switch Board 1',
             switches: {
               1: {
                 id: 1,
@@ -233,6 +239,7 @@ function MyDataService($http, $log) {
           },
           2: {
             id: 2,
+            name: 'Switch Board 2',
             switches: {
               1: {
                 id: 1,
@@ -288,6 +295,7 @@ function MyDataService($http, $log) {
           },
           3: {
             id: 3,
+            name: 'Switch Board 3',
             switches: {
               1: {
                 id: 1,
