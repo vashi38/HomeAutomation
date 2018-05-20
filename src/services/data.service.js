@@ -29,7 +29,7 @@ function MyDataService($http, $log) {
       1: {
         id: 1,
         name: "Room 1",
-        SwitchBoards: {
+        switchBoards: {
           1: {
             id: 1,
             name: "Switch Board 1",
@@ -203,7 +203,7 @@ function MyDataService($http, $log) {
       2: {
         id: 2,
         name: "Room 2",
-        SwitchBoards: {
+        switchBoards: {
           1: {
             id: 1,
             name: "Switch Board 1",
@@ -377,7 +377,7 @@ function MyDataService($http, $log) {
       3: {
         id: 3,
         name: "Room 3",
-        SwitchBoards: {
+        switchBoards: {
           1: {
             id: 1,
             name: "Switch Board 1",

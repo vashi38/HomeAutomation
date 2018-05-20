@@ -2,7 +2,8 @@
 var MySwitchBoard = require('./SwitchBoard.js');
 class Room {
   constructor(id, name, switchBoards) {  
-    this.id = id ? id : ++ Room.TOTAL;
+    Room.TOTAL++;
+    this.id = id ? id : Room.TOTAL;
     this.name = name;
     if (switchBoards) {
       this.switchBoards = Object.values(switchBoards).map(function (board) {

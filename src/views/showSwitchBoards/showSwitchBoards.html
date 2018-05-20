@@ -1,11 +1,11 @@
-<div class = "navigation"><a ui-sref="AllRooms">{{$ctrl.ActiveRoom.name}}</a> > Switch Boards</div>
-<div class="switch-board-wrapper">
-        <div  class="switch-board"
-              ng-click="$ctrl.handleSwitchBoardClick(sb)"
-              ng-class=""
-              ng-repeat="sb in $ctrl.allSwitchBoards">
-              {{sb.name}}
-        </div>
-<input type="button" class="AddSwitchBoardBtn" value = "Add Switch Board" ng-click = "$ctrl.handleAddSBBtnClick()"/>        
-      </div>
-      
+<div style="margin-bottom: 70px">
+  <div class="navigation">
+    <a ui-sref="AllRooms">{{$ctrl.ActiveRoom.name}}</a> > Switch Boards</div>
+  <div class="switch-board-wrapper">
+    <div class="switch-board" ng-click="$ctrl.handleSwitchBoardClick(sb)" ng-class="" ng-repeat="sb in $ctrl.allSwitchBoards">
+      {{sb.name}}
+    </div>
+    <input type="button" class="AddSwitchBoardBtn" value="Add Switch Board" ng-click="$ctrl.handleAddSBBtnClick()" />
+  </div>
+
+</div>
