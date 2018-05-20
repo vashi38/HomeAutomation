@@ -17,5 +17,14 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('AllSwitches', {
       url: '/AllSwitches',
       component: 'allSwitches'
-    });
+    })
+    .state('CreateRoom', {
+      url: '/CreateRoom',
+      component: 'createRoom'
+    })
+    .state('CreateSB', {
+      url: '/CreateSB',
+      component: 'createSB'
+    })
+    ;
 }

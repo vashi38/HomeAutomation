@@ -1,3 +1,4 @@
+
 module.exports = {
   template: require('./showRooms.html'),
   controller: ShowRoomsController
@@ -5,7 +6,7 @@ module.exports = {
 /** @ngInject */
 function ShowRoomsController($log, MyRoomService, MyDataService, $state) {
   var vm = this;
-
+  vm.editMode = false;
   MyRoomService.getRooms().then(function (response) {
     vm.allRooms = response;
     // $log.log(vm.allRooms);
@@ -14,5 +15,11 @@ function ShowRoomsController($log, MyRoomService, MyDataService, $state) {
     MyRoomService.setActiveRoom(selectedRoom.id);
     // $log.log(selectedRoom);
     $state.go('AllSwitchBoards');
-  }
+  };
+  vm.handleEditBtnClick = function () {
+    vm.editMode = !vm.editMode;
+  };
+  vm.handleAddRoomBtnClick = function () {
+    $state.go('CreateRoom');
+  };
 }

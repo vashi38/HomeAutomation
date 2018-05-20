@@ -1,6 +1,6 @@
 const MyRoom = require("../views/classes/Room.js");
 /** @ngInject */
-function MyRoomService(MyDataService) {
+function MyRoomService(MyDataService, $log) {
   /**
    * allr\Rooms --> holds all rooms. Once initialised, no more API calls
    */
@@ -11,9 +11,10 @@ function MyRoomService(MyDataService) {
     if (allRooms) {
       return Promise.resolve(allRooms);
     }
-    return MyDataService.getIntialState().then(function (rooms) {
-      allRooms = Object.values(rooms).map(function (room) {
-        return new MyRoom(room.id, room.name, room.SwitchBoards);
+    return MyDataService.getIntialState().then(function(rooms) {
+      $log.log(rooms);
+      allRooms = Object.values(rooms).map(function(room) {
+        return new MyRoom(room.id, room.name, room.switchBoards);
       });
       return allRooms;
       // .map(r => ({
@@ -41,19 +42,52 @@ function MyRoomService(MyDataService) {
   }
   function _getActiveSwitchBoard() {
     if (allRooms && activeSwitchBoard && activeRoomId) {
-      return _getActiveRoom().switchBoards.filter(function (sb) {
+      return _getActiveRoom().switchBoards.filter(function(sb) {
         return sb.id === activeSwitchBoard;
       })[0];
     } else {
       return null;
     }
   }
+
+  function _createRoom(name) {
+    if (!allRooms) {
+      return null;
+    }
+    var newRoom = new MyRoom(null, name, null);
+    // $log.log(allRooms);
+    allRooms.push(newRoom);
+    $log.log(allRooms);
+    MyDataService.storeToLS(allRooms);
+    return true;
+  }
+
+  function _createSwitchBoard(name, ip) {
+    if (!allRooms && !_getActiveRoom()) {
+      return null;
+    }
+    _getActiveRoom().addSwitchBoard(name, ip);
+    $log.log(allRooms);
+    MyDataService.storeToLS(allRooms);
+    return true;
+  }
+
+  function _ValidateNavigation() {
+    if (!allRooms) {
+      return null;
+    }
+    return true;
+  }
+
   return {
     getRooms: _getRooms,
+    createRoom: _createRoom,
+    createSwitchBoard: _createSwitchBoard,
     setActiveRoom: _setActiveRoom,
     getActiveRoom: _getActiveRoom,
     setActiveSwitchBoard: _setActiveSwitchBoard,
-    getActiveSwitchBoard: _getActiveSwitchBoard
+    getActiveSwitchBoard: _getActiveSwitchBoard,
+    ValidateNavigation: _ValidateNavigation
   };
 }
 module.exports = MyRoomService;

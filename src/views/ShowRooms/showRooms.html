@@ -1,11 +1,13 @@
-<div class = "navigation">All Rooms</div>
+<div style = "margin-bottom: 70px;">
+<div class="navigation">All Rooms</div>
+<input class="EditBtn" type="button" value="Edit" ng-click="handleEditBtnClick()" />
 <div class="room-wrapper">
-        <div  class="room"
-              ng-click="$ctrl.handleRoomClick(rm)"
-              ng-class=""
-              ng-repeat="rm in $ctrl.allRooms">
-              {{rm.name}}
-        </div>
-      
-      </div>
-      
+  <div class="room" 
+      ng-click="$ctrl.handleRoomClick(rm)" 
+      ng-class="" 
+      ng-repeat="rm in $ctrl.allRooms">
+    {{rm.name}}
+  </div>
+  <input type="button" class="AddRoomBtn" value = "Add Room" ng-click = "$ctrl.handleAddRoomBtnClick()"/>
+</div>
+</div>

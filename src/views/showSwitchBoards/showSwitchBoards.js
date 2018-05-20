@@ -22,4 +22,7 @@ function showSwitchBoardsController(
     // $log.log(selectedSwitchBoard);
     $state.go("AllSwitches");
   };
+  vm.handleAddSBBtnClick = function () {
+    $state.go('CreateSB');
+  };
 }

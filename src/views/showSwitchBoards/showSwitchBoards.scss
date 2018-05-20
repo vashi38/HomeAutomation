@@ -19,3 +19,20 @@
     text-align: center;
     margin-top: 40px;
 }
+.AddSwitchBoardBtn {
+    // display: block;
+    width: 100%;
+    background: #72d304b2;
+    border: none;
+    padding: 20px;
+    font-size: 20px;
+    position: fixed;
+    bottom: 0;
+    flex: 1 1 50%;
+    // padding: 20px;
+}
+@media screen and (min-width: 768px) {
+    .AddSwitchBoardBtn {
+      width: 35%;
+    }
+}    
