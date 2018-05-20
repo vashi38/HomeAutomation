@@ -5,6 +5,7 @@ module.exports = {
 /** @ngInject */
 function CreateRoomController($log, MyRoomService, MyDataService, $state) {
   var vm = this;
+  vm.ActiveRoom = MyRoomService.getActiveRoom();
   if (!MyRoomService.ValidateNavigation()){
     $state.go('AllRooms');
   }
