@@ -10,5 +10,6 @@
         </table>
        
     </form>
-    <input type="button" value="Add Room" class="addBtn" ng-click="$ctrl.handleAddBtnClick()"/>
+    <input type="button" value="Add Room" class="addBtn" ng-show="!$ctrl.editMode" ng-click="$ctrl.handleAddBtnClick()"/>
+    <input type="button" value="Save Changes" class="addBtn" ng-show="$ctrl.editMode" ng-click="$ctrl.handleSaveBtnClick()"/>
 </div>

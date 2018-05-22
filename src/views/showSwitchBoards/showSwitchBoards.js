@@ -10,19 +10,55 @@ function showSwitchBoardsController(
   $state
 ) {
   var vm = this;
+  var allRooms;
 
-  // $log.log(MyRoomService.getActiveRoom().getSwitchBoards());
-  vm.ActiveRoom = MyRoomService.getActiveRoom();
-  if(vm.ActiveRoom == null)
-    $state.go('AllRooms');
+  var _init = function () {
+    vm.editMode = false;
+    MyRoomService.setActiveSwitchBoard(null);
+    // allRooms = MyRoomService.getAllRooms();
+    // $log.log(MyRoomService.getActiveRoom().getSwitchBoards());
+    vm.ActiveRoom = MyRoomService.getActiveRoom();
+    $log.log(vm.ActiveRoom);
+    if (vm.ActiveRoom == null) 
+      $state.go("AllRooms");
+    // vm.allSwitchBoards = vm.ActiveRoom.getSwitchBoards(); 
+  };
+  
+  _init();
 
-  vm.allSwitchBoards = MyRoomService.getActiveRoom().getSwitchBoards();
-  vm.handleSwitchBoardClick = function (selectedSwitchBoard) {
+  vm.handleSwitchBoardClick = function (selectedSwitchBoard, event) {
+    if(event.target.nodeName === 'SPAN') return;
     MyRoomService.setActiveSwitchBoard(selectedSwitchBoard.id);
-    // $log.log(selectedSwitchBoard);
-    $state.go("AllSwitches");
+    if (!vm.editMode) {
+      $state.go("AllSwitches");
+    } else {
+      $state.go("CreateSB");
+    }
   };
   vm.handleAddSBBtnClick = function () {
-    $state.go('CreateSB');
+    $state.go("CreateSB");
+  };
+  vm.handleEditBtnClick = function () {
+    vm.editMode = !vm.editMode;
+  };
+  vm.handleSaveBtnClick = function () {
+    vm.editMode = !vm.editMode;
+    MyRoomService.sbSaveChanges();
+  };
+  vm.handleCancelBtnClick = function () {
+    vm.editMode = !vm.editMode;
+    vm.ActiveRoom = MyRoomService.sbCancelChanges();
+    $log.log(vm.ActiveRoom.getSwitchBoards());
+  };
+  vm.handleDeleteBtn = function (sb, event) {
+    event.stopPropagation();
+    $log.log(vm.ActiveRoom);
+    // vm.allSwitchBoards = Object.values(vm.allSwitchBoards).filter(function (r) {
+    //   if (r.id === sb.id) return false;
+    //   return true;
+    // });
+    vm.ActiveRoom.deleteSwitchBoard(sb.id);
+    // vm.ActiveRoom.switchBoards = vm.allSwitchBoards;
+    $log.log(vm.ActiveRoom);
   };
 }

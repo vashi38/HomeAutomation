@@ -552,22 +552,22 @@ function MyDataService($http, $log) {
   }
   function _sendUpdate(id) {
     return $http({
-      method: "GET",
+      method: 'GET',
       url: URL + id
     })
-      .then(function(response) {
+      .then(function (response) {
         $log.log(response);
       })
-      .catch(function(errRes) {
+      .catch(function (errRes) {
         $log.error(errRes);
       });
   }
 
   function _storeToLS(obj) {
-    localStorage.setItem("HomeAutomationLS", JSON.stringify(obj));
+    localStorage.setItem('HomeAutomationLS', JSON.stringify(obj));
   }
   function _getFromLS() {
-    var obj = JSON.parse(localStorage.getItem("HomeAutomationLS"));
+    var obj = JSON.parse(localStorage.getItem('HomeAutomationLS'));
     return obj;
   }
 

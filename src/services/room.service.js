@@ -11,9 +11,9 @@ function MyRoomService(MyDataService, $log) {
     if (allRooms) {
       return Promise.resolve(allRooms);
     }
-    return MyDataService.getIntialState().then(function(rooms) {
+    return MyDataService.getIntialState().then(function (rooms) {
       $log.log(rooms);
-      allRooms = Object.values(rooms).map(function(room) {
+      allRooms = Object.values(rooms).map(function (room) {
         return new MyRoom(room.id, room.name, room.switchBoards);
       });
       return allRooms;
@@ -62,12 +62,31 @@ function MyRoomService(MyDataService, $log) {
     return true;
   }
 
+  function _updateRoom(room, name) {
+    if(!allRooms){
+      return null;
+    }
+    room.name = name;
+    MyDataService.storeToLS(allRooms);
+    return true;
+  }
+
   function _createSwitchBoard(name, ip) {
     if (!allRooms && !_getActiveRoom()) {
       return null;
     }
     _getActiveRoom().addSwitchBoard(name, ip);
     $log.log(allRooms);
+    MyDataService.storeToLS(allRooms);
+    return true;
+  }
+  function _updateSwitchBoard(switchBoard, name, ip){
+    if (!allRooms && !_getActiveRoom()) {
+      return null;
+    }
+    switchBoard.name = name;
+    switchBoard.ip = ip;
+    // $log.log(allRooms);
     MyDataService.storeToLS(allRooms);
     return true;
   }
@@ -78,16 +97,55 @@ function MyRoomService(MyDataService, $log) {
     }
     return true;
   }
-
+  function _getAllRooms() {
+    return allRooms;
+  }
+  function _updateSwitchBoardList(switchBoards) {
+    _getActiveRoom().switchBoards = switchBoards;
+  }
+  function _sbCancelChanges() {
+    allRooms = Object.values(MyDataService.getFromLS()).map(function (room) {
+      return new MyRoom(room.id, room.name, room.switchBoards);
+    });
+    $log.log(_getActiveRoom());
+    return _getActiveRoom();
+  }
+  function _sbSaveChanges() {
+    $log.log(allRooms);
+    MyDataService.storeToLS(allRooms);
+  }
+  function _updateRoomsList(list) {
+    allRooms = list;
+  }
+  function _roomCancelChanges() {
+    allRooms = Object.values(MyDataService.getFromLS()).map(function (room) {
+      return new MyRoom(room.id, room.name, room.switchBoards);
+    });
+    $log.log(allRooms);
+    return allRooms;
+  }
+  function _roomSaveChanges() {
+    $log.log(allRooms);
+    MyDataService.storeToLS(allRooms);
+  }
   return {
     getRooms: _getRooms,
     createRoom: _createRoom,
+    updateRoom: _updateRoom,
     createSwitchBoard: _createSwitchBoard,
+    updateSwitchBoard: _updateSwitchBoard,
+    updateSwitchBoardList: _updateSwitchBoardList, 
+    getAllRooms: _getAllRooms,
     setActiveRoom: _setActiveRoom,
     getActiveRoom: _getActiveRoom,
     setActiveSwitchBoard: _setActiveSwitchBoard,
     getActiveSwitchBoard: _getActiveSwitchBoard,
-    ValidateNavigation: _ValidateNavigation
+    ValidateNavigation: _ValidateNavigation,
+    sbCancelChanges: _sbCancelChanges,
+    sbSaveChanges: _sbSaveChanges,
+    updateRoomsList: _updateRoomsList,
+    roomCancelChanges: _roomCancelChanges,
+    roomSaveChanges: _roomSaveChanges
   };
 }
 module.exports = MyRoomService;
